@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/educart/db" VERSION="2017110900" COMMENT="XMLDB file for Moodle local/educart"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  	<TABLES>
+	  	
+	  	<TABLE NAME="educart_cart" COMMENT="This table saves information about course which are in add to cart by user.">
+		    <FIELDS>
+		      	<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+		      	<FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+		      	<FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+		      	<FIELD NAME="price" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+		      	<FIELD NAME="timecreated" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+		      	<FIELD NAME="status" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false"/>
+		    </FIELDS>
+	      	<KEYS>
+        		<KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="The unique id for each course price."/>
+      		</KEYS>
+	  	</TABLE>
+	  	<TABLE NAME="educart_order" COMMENT="This table saves information about courses which are place in order by user.">
+		    <FIELDS>
+		      	<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+		      	<FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+		      	<FIELD NAME="courseids" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+		      	<FIELD NAME="timecreated" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+		      	<FIELD NAME="status" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+		    </FIELDS>
+	      	<KEYS>
+        		<KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="The unique id for course order."/>
+      		</KEYS>
+	  	</TABLE>
+	  	<TABLE NAME="educart_coupons" COMMENT="This table saves information about coupons.">
+	  		<FIELDS>
+	  			<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+	  			<FIELD NAME="coupon_name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="coupon_desc" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="status" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="discount_type" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="coupon_amount" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="coupon_expiry" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="minimum_spend" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="maximum_spend" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="coupon_for_course" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="coupon_for_exclude_course" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="allowed_emails" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="usage_limit_per_coupon" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="usage_limit_per_user" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="usage_limit_x_item" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  		</FIELDS>
+	  		<KEYS>
+        		<KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="The unique id for coupon."/>
+      		</KEYS>
+	  	</TABLE>
+  	</TABLES>
+</XMLDB>

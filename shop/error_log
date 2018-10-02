@@ -1,0 +1,27 @@
+[01-May-2018 12:58:50 Asia/Kolkata] PHP Warning:  explode() expects at least 2 parameters, 1 given in /home/demodebo/public_html/moodle/moodledemos/local/educart/shop/return.php on line 38
+[01-May-2018 12:58:50 Asia/Kolkata] PHP Warning:  Invalid argument supplied for foreach() in /home/demodebo/public_html/moodle/moodledemos/local/educart/shop/return.php on line 40
+[01-May-2018 13:25:35 Asia/Kolkata] PHP Warning:  Creating default object from empty value in /home/demodebo/public_html/moodle/moodledemos/local/educart/shop/remove_cart.php on line 34
+[01-May-2018 15:31:46 Asia/Kolkata] PHP Warning:  Creating default object from empty value in /home/demodebo/public_html/moodle/moodledemos/local/educart/shop/remove_cart.php on line 34
+[02-May-2018 20:34:47 Asia/Kolkata] PHP Notice:  Trying to get property of non-object in /home/demodebo/public_html/moodle/moodledemos/local/educart/shop/return.php on line 43
+[02-May-2018 20:34:47 Asia/Kolkata] PHP Notice:  Trying to get property of non-object in /home/demodebo/public_html/moodle/moodledemos/local/educart/shop/return.php on line 44
+[02-May-2018 20:34:47 Asia/Kolkata] PHP Notice:  Trying to get property of non-object in /home/demodebo/public_html/moodle/moodledemos/local/educart/shop/return.php on line 45
+[02-May-2018 20:34:47 Asia/Kolkata] PHP Notice:  Trying to get property of non-object in /home/demodebo/public_html/moodle/moodledemos/local/educart/shop/return.php on line 46
+[02-May-2018 20:34:47 Asia/Kolkata] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::update_record_raw() id field must be specified. Debug: 
+Error code: codingerror
+* line 1463 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 1519 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->update_record_raw()
+* line 49 of /local/educart/shop/return.php: call to mysqli_native_moodle_database->update_record()
+
+[10-May-2018 14:05:48 Asia/Kolkata] PHP Notice:  Trying to get property of non-object in /home/demodebo/public_html/moodle/moodledemos/local/educart/shop/checkout.php on line 60
+[10-May-2018 14:05:48 Asia/Kolkata] PHP Notice:  Trying to get property of non-object in /home/demodebo/public_html/moodle/moodledemos/local/educart/shop/checkout.php on line 60
+[21-May-2018 17:41:44 Asia/Kolkata] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+SELECT SUM( price ) as totalpayble FROM mdl_educart_cart WHERE userid = ? and status = 
+[array (
+  0 => '3',
+)]
+Error code: dmlreadexception
+* line 486 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1175 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1558 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 117 of /local/educart/shop/cart.php: call to moodle_database->get_record_sql()
+
