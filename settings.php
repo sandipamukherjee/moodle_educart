@@ -36,18 +36,49 @@ if (is_siteadmin()) {
     );
     
     $ADMIN->add('local_educart', $settings);
+
+    $settings = new admin_settingpage('local_educart_email', get_string('local_educart_email', 'local_educart'));
+    $ADMIN->add('local_educart', $settings);
+
+    $name = 'local_educart/config_student_email_subject';
+    $default = get_string('student_email_subject', 'local_educart');
+    $title = get_string('config_student_email_subject', 'local_educart');
+    $description = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $settings->add($setting);
+
+    $name = 'local_educart/config_student_email_body';
+    $default = get_string('student_email_body', 'local_educart');
+    $title = get_string('config_student_email_body', 'local_educart');
+    $description = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $settings->add($setting);
+
+    $name = 'local_educart/config_teacher_email_subject';
+    $default = get_string('teacher_admin_email_subject', 'local_educart');
+    $title = get_string('config_teacher_email_subject', 'local_educart');
+    $description = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $settings->add($setting);
+
+    $name = 'local_educart/config_teacher_email_body';
+    $default = get_string('teacher_admin_email_body', 'local_educart');
+    $title = get_string('config_teacher_email_body', 'local_educart');
+    $description = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $settings->add($setting);
+
+    $name = 'local_educart/config_admin_email_subject';
+    $default = get_string('teacher_admin_email_subject', 'local_educart');
+    $title = get_string('config_admin_email_subject', 'local_educart');
+    $description = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $settings->add($setting);
+
+    $name = 'local_educart/config_admin_email_body';
+    $default = get_string('teacher_admin_email_body', 'local_educart');
+    $title = get_string('config_admin_email_body', 'local_educart');
+    $description = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $settings->add($setting);
 }
-
-
-/*$settings->add(new admin_setting_heading('local_educart_coupon_general', get_string('general', 'local_educart'), ''));
-$name = 'local_educart/discount_type';
-$title = get_string('discount_type', 'local_educart');
-$description = get_string('discount_type_desc', 'local_educart');
-$default = 'fixed_cart';
-$setting = new admin_setting_configselect($name, $title, $description, $default, array(
-    'percent' => get_string('percent', 'local_educart'),
-    'fixed_cart' => get_string('fixed_cart', 'local_educart'),
-    'fixed_product' => get_string('fixed_product', 'local_educart')
-));
-$setting->set_updatedcallback('theme_reset_all_caches');
-$settings->add($setting);*/

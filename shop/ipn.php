@@ -88,6 +88,23 @@ if (!empty($_POST)) {//
         		
         		$shortname = $course->shortname;
         		if (!empty($mailstudents)) {
+        			$courselink = html_writer::link(new moodle_url('/course/view.php', array('id'=>$course->id)), $course->fullname);
+        			$fields = array(
+			        	'[[coursename]]',
+			        	'[[firstname]]',
+			        	'[[lastname]]',
+			        	'[[coursefullname]]',
+			            '[[courselink]]'
+			        );
+			        $values = array(
+			            $course->fullname,
+			            $user->firstname,
+						$user->lastname,
+						$course->fullname,
+						$courselink
+		        	);
+		        	$tempsubject = str_replace($fields, $values, get_config('local_educart', 'config_student_email_subject'));
+		        	$tempbody = str_replace($fields, $values, get_config('local_educart', 'config_student_email_body'));
 		            $a = new stdClass();
 		            $a->coursename = $course->fullname;
 		            $a->profileurl = "$CFG->wwwroot/user/view.php?id=$isorder->userid";
@@ -99,17 +116,31 @@ if (!empty($_POST)) {//
 		            $eventdata->name              = 'local_educart_transaction_enrolment';
 		            $eventdata->userfrom          = empty($teacher) ? core_user::get_noreply_user() : $teacher;
 		            $eventdata->userto            = $user;
-		            $eventdata->subject           = get_string("enrolmentnew", 'enrol', $shortname);
-		            $eventdata->fullmessage       = get_string('welcometocoursetext', '', $a);
-		            $eventdata->fullmessageformat = FORMAT_PLAIN;
-		            $eventdata->fullmessagehtml   = '';
-		            $eventdata->smallmessage      = '';
+		            $eventdata->subject           = $tempsubject;
+		            $eventdata->fullmessage       = $tempbody;
+		            $eventdata->fullmessageformat = FORMAT_MARKDOWN;
+		            $eventdata->fullmessagehtml   = $tempbody;
+		            $eventdata->smallmessage      = 'huphup';
 		            fwrite($myfile, print_r('user:', true));
 		            fwrite($myfile, print_r($user, true));
 		            message_send($eventdata);
 		            
 		        }
 		        if (!empty($mailteachers) && !empty($teacher)) {
+		        	$fields = array(
+			        	'[[coursename]]',
+			        	'[[firstname]]',
+			        	'[[lastname]]',
+			        	'[[studentname]]'
+			        );
+			        $values = array(
+			            $course->fullname,
+			            $teacher->firstname,
+						$teacher->lastname,
+						$user->firstname.' '.$user->lastname
+		        	);
+		        	$tempsubject = str_replace($fields, $values, get_config('local_educart', 'config_teacher_email_subject'));
+		        	$tempbody = str_replace($fields, $values, get_config('local_educart', 'config_teacher_email_body'));
 		        	$a = new stdClass();
 		            $a->course = $course->fullname;
 		            $a->user = fullname($user);
@@ -121,20 +152,34 @@ if (!empty($_POST)) {//
 		            $eventdata->name              = 'local_educart_transaction_enrolment';
 		            $eventdata->userfrom          = $user;
 		            $eventdata->userto            = $teacher;
-		            $eventdata->subject           = get_string("enrolmentnew", 'enrol', $shortname);
-		            $eventdata->fullmessage       = get_string('enrolmentnewuser', 'enrol', $a);
-		            $eventdata->fullmessageformat = FORMAT_PLAIN;
-		            $eventdata->fullmessagehtml   = '';
-		            $eventdata->smallmessage      = '';
+		            $eventdata->subject           = $tempsubject;
+		            $eventdata->fullmessage       = $tempbody;
+		            $eventdata->fullmessageformat = FORMAT_MARKDOWN;
+		            $eventdata->fullmessagehtml   = $tempbody;
+		            $eventdata->smallmessage      = 'oii';
 		            fwrite($myfile, print_r('teacher:', true));
 		            fwrite($myfile, print_r($teacher, true));
 		            message_send($eventdata);  
 		        }
 		        if (!empty($mailadmins)) {
+		        	$fields = array(
+			        	'[[coursename]]',
+			        	'[[firstname]]',
+			        	'[[lastname]]',
+			        	'[[studentname]]'
+			        );
 		            $a->course = $course->fullname;
 		            $a->user = fullname($user);
 		            $admins = get_admins();
 		            foreach ($admins as $admin) {
+		            	$values = array(
+				            $course->fullname,
+				            $admin->firstname,
+							$admin->lastname,
+							$user->firstname.' '.$user->lastname
+		        		);
+		        		$tempsubject = str_replace($fields, $values, get_config('local_educart', 'config_admin_email_subject'));
+		        		$tempbody = str_replace($fields, $values, get_config('local_educart', 'config_admin_email_body'));
 		                $eventdata = new \core\message\message();
 		                $eventdata->courseid          = $course->id;
 		                $eventdata->modulename        = 'moodle';
@@ -142,11 +187,11 @@ if (!empty($_POST)) {//
 		                $eventdata->name              = 'local_educart_transaction_enrolment';
 		                $eventdata->userfrom          = $user;
 		                $eventdata->userto            = $admin;
-		                $eventdata->subject           = get_string("enrolmentnew", 'enrol', $shortname);
-		                $eventdata->fullmessage       = get_string('enrolmentnewuser', 'enrol', $a);
-		                $eventdata->fullmessageformat = FORMAT_PLAIN;
-		                $eventdata->fullmessagehtml   = '';
-		                $eventdata->smallmessage      = '';
+		                $eventdata->subject           = $tempsubject;
+		                $eventdata->fullmessage       = $tempbody;
+		                $eventdata->fullmessageformat = FORMAT_MARKDOWN;
+		                $eventdata->fullmessagehtml   = $tempbody;
+		                $eventdata->smallmessage      = 'ami admin';
 		                fwrite($myfile, print_r('admin:', true));
 		                fwrite($myfile, print_r($admin, true));
 		                message_send($eventdata);

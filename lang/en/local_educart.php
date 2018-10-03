@@ -99,4 +99,45 @@ $string['notapplicableforproductmsg'] = 'Sorry, this coupon is not applicable to
 $string['minspend'] = 'The minimum spend for this coupon is: {$a}';
 $string['maxspend'] = 'The maximum spend for this coupon is: {$a}';
 
-$string["couponapplysuccess"] = "Congratulation! your coupon applied successfully.";
+$string["couponapplysuccess"] = 'Congratulation! your coupon applied successfully.';
+
+$string["config_student_email_subject"] = 'Configure email subject for student(s)';
+$string["config_teacher_email_subject"] = 'Configure email subject for teacher(s)';
+$string["config_admin_email_subject"] = 'Configure email subject for admin(s)';
+$string["config_student_email_body"] = 'Configure email body for student(s)';
+$string["config_teacher_email_body"] = 'Configure email body for teacher(s)';
+$string["config_admin_email_body"] = 'Configure email body for admin(s)';
+
+$string["student_email_subject"] = 'Access your new course [[coursename]]';
+$string["student_email_body"] = '
+<html>
+<body>
+<table cellspacing="0" cellpadding="8">
+<tr>
+<td colspan="2">
+<h3>Hello [[firstname]] [[lastname]]</h3>
+You have now been enrolled in [[coursefullname]]. Please click on the following link to access
+the course. : [[courselink]] 
+</td>
+</tr>
+</table>
+</body>
+</html>';
+
+$string["teacher_admin_email_subject"] = 'New enrolment in [[coursename]]';
+$string["teacher_admin_email_body"] = '
+<html>
+<body>
+<table cellspacing="0" cellpadding="8">
+<tr>
+<td colspan="2">
+<h3>Hello [[firstname]] [[lastname]]</h3>
+A new student, [[studentname]] has just enrolled in the course [[coursename]].
+</td>
+</tr>
+</table>
+</body>
+</html>';
+
+$string["local_educart_email"] = 'Configure email';
+

@@ -203,7 +203,13 @@
     background-color: red;
 }
 
+.coupon_action a:first-child {
+    padding: 0px 4px 0px 0px;
+}
 
+.coupon_action a:last-child {
+    padding: 0px 4px;
+}
 
 
 
