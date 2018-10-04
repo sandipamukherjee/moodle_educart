@@ -4,7 +4,17 @@
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
   	<TABLES>
-	  	
+	  	<TABLE NAME="educart_coupon_usage" COMMENT="This table saves information about coupon usage.">
+	  		<FIELDS>
+	  			<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+	  			<FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="couponname" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+	  			<FIELD NAME="couponuse" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+	  		</FIELDS>
+	  		<KEYS>
+        		<KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="The unique id for each user's coupon usage."/>
+      		</KEYS>
+	  	</TABLE>
 	  	<TABLE NAME="educart_cart" COMMENT="This table saves information about course which are in add to cart by user.">
 		    <FIELDS>
 		      	<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>

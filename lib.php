@@ -25,9 +25,9 @@
 
 function local_educart_extend_navigation(global_navigation $navigation) {
     $nodemain = $navigation->add(get_string("pluginname", "local_educart"));
-    $nodeshop = $navigation->add(get_string('shop', 'local_educart'), new moodle_url("/local/educart/shop"), navigation_node::TYPE_SETTING,
+    $nodeshop = $navigation->add(get_string('shop', 'local_educart'), new moodle_url("/local/educart/shop"), navigation_node::TYPE_CUSTOM,
             null, null);
-    $nodecart = $navigation->add(get_string('cart', 'local_educart'), new moodle_url("/local/educart/shop/cart.php"), navigation_node::TYPE_SETTING,
+    $nodecart = $navigation->add(get_string('cart', 'local_educart'), new moodle_url("/local/educart/shop/cart.php"), navigation_node::TYPE_CUSTOM,
             null, null);
     $nodemain->showinflatnavigation = $nodeshop->showinflatnavigation = $nodecart->showinflatnavigation = true;
 }
@@ -118,7 +118,6 @@ function add_coupon($add_coupon) {
     } else {
         $add_coupon_obj->usage_limit_x_item = '-';
     }
-    print_r($add_coupon_obj);
     $DB->insert_record('educart_coupons', $add_coupon_obj, false);
     redirect($CFG->wwwroot.'/local/educart/settings/coupons.php');
 }

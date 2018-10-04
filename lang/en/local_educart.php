@@ -90,7 +90,8 @@ $string['coupon_amount_err'] = 'Amount value must be grater than 0.';
 $string['same_element'] = 'Same Element not allowed';
 $string['edit'] = 'Edit';
 $string['delete'] = 'Delete';
-
+$string['couponedit'] = 'Edit coupon';
+$string['couponadd'] = 'Add coupon';
 $string['apply_coupon'] = 'Apply Coupon';
 $string['coupon_nametaken'] = 'Coupon name is already used for another coupon ({$a}). Please use another coupon name or edit coupon {$a}.';
 $string['invalid_coupon'] = 'This Coupon is not valid.';
@@ -140,4 +141,6 @@ A new student, [[studentname]] has just enrolled in the course [[coursename]].
 </html>';
 
 $string["local_educart_email"] = 'Configure email';
+$string["search_course"] = 'Search for a Course';
+$string["notapplicableforyou"] = 'Sorry! this coupon code is not applicable for you!';
 

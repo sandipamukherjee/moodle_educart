@@ -4,7 +4,6 @@ jQuery( document ).ready(function($) {
 	$('#coupon_field').blur(function(){
     	url = $('#coupon_valid_url').val();
     	coupon = $(this).val();
-    	console.log(coupon);
     	if (coupon != "") { 
     		$.ajax({url: url, 
 		    	data : { coupon : coupon },

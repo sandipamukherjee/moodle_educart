@@ -65,7 +65,7 @@ class coupon_form extends moodleform {
 		
 		$courses_for_shops = $DB->get_records_sql("Select c.id, c.shortname from {course} as c 
 		LEFT JOIN {course_categories} as cc ON c.category = cc.id 
-		JOIN {enrol} as e ON c.id = e.courseid and e.enrol = ? and e.status = ? and c.visible = ?", array("educart", 0, 1));
+		JOIN {enrol} as e ON c.id = e.courseid and e.enrol = ? and e.status = ? and c.visible = ?", array("paypal", 0, 1));
 		
 		$coupon_for_course = array();
 		foreach ($courses_for_shops as $course_for_shop) {
@@ -74,7 +74,7 @@ class coupon_form extends moodleform {
 		
 		$options = array(        
             'multiple' => true,             
-            'noselectionstring' => 'Search for a Course',                                                                
+            'noselectionstring' => get_string('search_course', 'local_educart'),                                                                
         );         
         $mform->addElement('autocomplete', 'coupon_for_course', get_string('coupon_for_course', 'local_educart'), $coupon_for_course, $options);
 
@@ -96,16 +96,17 @@ class coupon_form extends moodleform {
         $mform->setType('usage_limit_per_coupon', PARAM_INT);
         $mform->addElement('text', 'usage_limit_per_user', get_string('usage_limit_per_user', 'local_educart'));
         $mform->setType('usage_limit_per_user', PARAM_INT);
+        $mform->addElement('html', '<div class="hide">');
         $mform->addElement('text', 'usage_limit_x_item', get_string('usage_limit_x_item', 'local_educart'));
         $mform->setDefault('usage_limit_x_item', 0);
         $mform->setType('usage_limit_x_item', PARAM_INT);
+        $mform->addElement('html', '<div>');
 
         $couponid = $this->_customdata['couponid'];
         if(!empty($couponid)) {
         	$coupon_data = $DB->get_record('educart_coupons', array('id' => $couponid));
 			$mform->addElement('hidden', 'id', $couponid);
 			$mform->setType('id', PARAM_INT);
-	        $this->set_data($coupon_data);
         }
 		
 		$this->add_action_buttons();
